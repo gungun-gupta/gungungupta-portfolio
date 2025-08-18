@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gungun Gupta | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+body { font-family: 'Poppins', sans-serif; background: #0A0E1A; margin: 0; }
+
+/* Section spacing */
+.section { padding: 80px 0; }
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #0D1117, #0D47A1);
+  display: flex;
+  align-items: center;
+}
+.text-accent { color: #42A5F5; }
+.btn-accent {
+  background: #1976D2; color: #fff; border: none; transition: 0.3s;
+}
+.btn-accent:hover { background: #1565C0; }
+.highlight {
+  color: #fff; border-bottom: 3px solid #42A5F5; padding-bottom: 2px;
+}
+.profile-wrapper { position: relative; display: inline-block; }
+.glow-circle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(25,118,210,0.6), transparent 70%);
+  z-index: 0;
+}
+.profile-pic {
+  width: 230px; height: 230px; border-radius: 50%;
+  object-fit: cover; position: relative; z-index: 1;
+  box-shadow: 0 10px 25px rgba(66,165,245,0.3);
+}
+@media (min-width: 992px) {
+  .profile-pic { width: 300px; height: 300px; }
+  .glow-circle { width: 350px; height: 350px; }
+}
+
+/* Navbar */
+.navbar-nav .nav-link {
+  position: relative; color: #fff; margin: 0 8px; transition: color 0.3s ease;
+}
+.navbar-nav .nav-link::after {
+  content: ''; position: absolute; left: 0; bottom: -4px; width: 0%; height: 3px;
+  background: #42A5F5; transition: width 0.3s ease; border-radius: 2px;
+}
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after { width: 100%; }
+
+/* Light Sections */
+#about, #skills, #contact {
+  background: #f4f8ff; color: #0D1117;
+}
+#about h2, #skills h2, #contact h2 { color: #1976D2; }
+
+/* Dark Sections */
+#education, #projects, footer {
+  background: linear-gradient(135deg, #0D1117, #0D47A1); color: #fff;
+}
+#education h2, #projects h2 { color: #90CAF9; }
+
+/* Timeline/Journey */
+.icon-circle {
+  width: 80px; height: 80px; margin: auto; border-radius: 50%;
+  background: linear-gradient(135deg, #1976D2, #42A5F5);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 32px;
+  box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
+  transition: transform 0.3s;
+}
+.icon-circle:hover { transform: scale(1.1); }
+.journey { position: relative; }
+.journey::before {
+  content: ''; position: absolute; top: 40px; left: 0; right: 0;
+  height: 4px; background: #90CAF9; z-index: -1;
+}
+@media (max-width: 768px) { .journey::before { display: none; } }
+
+/* Skills */
+.tech-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+.tech-item { text-align: center; }
+.tech-item i, .tech-item img {
+  font-size: 55px; color: #1976D2; transition: transform 0.3s, color 0.3s;
+}
+.tech-item i:hover, .tech-item img:hover { transform: scale(1.2); color: #0D47A1; }
+.tech-item p { margin-top: 10px; font-weight: 500; }
+
+/* Projects */
+#projects .card {
+  border-radius: 15px; transition: all 0.3s ease-in-out;
+}
+#projects .card:hover {
+  transform: translateY(-8px); box-shadow: 0 12px 25px rgba(66,165,245,0.4);
+}
+#projects .card-title { color: #0D47A1; }
+#projects .btn { background: #0D47A1; border: none; }
+#projects .btn:hover { background: #42A5F5; }
+
+/* Footer */
+footer h5 {
+  border-bottom: 2px solid #42A5F5; display: inline-block; padding-bottom: 5px;
+}
+footer ul li { margin-bottom: 8px; }
+footer .btn-floating {
+  border-radius: 50%; width: 45px; height: 45px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+}
+footer .btn-floating:hover { background-color: #42A5F5; color: #0D47A1; }
+
+/* === Animations === */
+.fade-left, .fade-right, .fade-up {
+  opacity: 0; transition: all 1s ease;
+}
+.fade-left { transform: translateX(-50px); }
+.fade-right { transform: translateX(50px); }
+.fade-up { transform: translateY(40px); }
+.fade-left.show, .fade-right.show, .fade-up.show {
+  opacity: 1; transform: translate(0,0);
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Gungun Gupta</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Content -->
+      <div class="col-md-6 text-white mb-5 mb-md-0 fade-left">
+        <h2 class="mb-2">Hello<span class="text-accent">.</span></h2>
+        <h1 class="fw-bold">I’m <span class="highlight">Gungun Gupta</span></h1>
+        <h3 class="fw-bold mb-4">Software Developer</h3>
+          <h5 class=" mb-4 hero-punchline">
+          I don’t just write code—I architect experiences.<br>
+          Passionate about tech, obsessed with results.<br>
+          Let’s turn your idea into reality.
+        </h5>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn btn-accent px-4">Got a project?</a>
+          <a href="Resume.01.pdf" download class="btn btn-outline-light px-4">My Resume</a>
+        </div>
+      </div>
+      <!-- Right Profile Image -->
+      <div class="col-md-6 text-center position-relative mt-4 mt-md-0 fade-right">
+        <div class="profile-wrapper">
+          <div class="glow-circle"></div>
+          <img src="my_img01.jpg" alt="Profile" class="profile-pic">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="section text-center fade-up">
+  <div class="container">
+    <h2 class="fw-bold mb-4">About Me</h2>
+    <p>Computer Science student with hands-on experience in building responsive web interfaces and contributing to real-world projects. Core Team Member at <b>Google Developer Groups (GDG)</b>, and ex-Web Dev Intern at <b>Aon Digicon LLP</b>. Passionate about building web apps, APIs, and impactful tech products.</p>
+  </div>
+</section>
+
+<!-- Education & Experience -->
+<section id="education" class="section fade-up">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5">Education & Experience</h2>
+    <div class="journey d-flex flex-column flex-md-row justify-content-center align-items-center gap-5">
+      <div class="journey-item text-center">
+        <div class="icon-circle mb-3"><i class="fas fa-graduation-cap"></i></div>
+        <h5>B.Tech CSE</h5>
+        <p class="small">Shri Shankaracharya Technical Campus <br>(2022 – 2026)<br><b>CGPA: 8.3</b></p>
+      </div>
+      <div class="journey-item text-center">
+        <div class="icon-circle mb-3"><i class="fas fa-briefcase"></i></div>
+        <h5>Web Dev Intern</h5>
+        <p class="small">Aon Digicon LLP <br>(May – Jul 2025)<br> ERP System with React & Tailwind</p>
+      </div>
+      <div class="journey-item text-center">
+        <div class="icon-circle mb-3"><i class="fas fa-users"></i></div>
+        <h5>GDG Core Team</h5>
+        <p class="small">Google Developer Groups <br>(2024 – 2025)<br> Organized events & led content</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="section text-center fade-up">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Tech Stack</h2>
+    <div class="tech-icons">
+      <div class="tech-item"><i class="fab fa-js-square"></i><p>JavaScript</p></div>
+      <div class="tech-item"><i class="fab fa-react"></i><p>React.js</p></div>
+      <div class="tech-item"><i class="fab fa-bootstrap"></i><p>Bootstrap</p></div>
+      <div class="tech-item"><i class="fab fa-css3-alt"></i><p>CSS3</p></div>
+      <div class="tech-item"><i class="fab fa-html5"></i><p>HTML5</p></div>
+      <div class="tech-item"><i class="fab fa-github"></i><p>GitHub</p></div>
+      <div class="tech-item"><i class="fas fa-database"></i><p>SQL</p></div>
+      <div class="tech-item"><i class="fab fa-microsoft"></i><p>C# / .NET</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="section fade-up">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">Projects</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-sm h-100 text-center border-0">
+          <img src="Screenshot (144).png" class="card-img-top" alt="Inventory Management System">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Inventory Management System</h5>
+            <p class="card-text small">ERP solution built with React.js, Tailwind CSS & REST APIs. Includes Requisition, Material Master & Purchase modules.</p>
+            <a href="https://github.com/gungun-gupta/React-requisition-project" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card shadow-sm h-100 text-center border-0">
+          <img src="Screenshot (145).png" class="card-img-top" alt="Myntra Clone">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Myntra Clone</h5>
+            <p class="card-text small">Responsive e-commerce platform built with HTML, CSS, JS & Bootstrap. Includes wishlist & bag functionality with LocalStorage.</p>
+            <a href="https://github.com/gungun-gupta/myntra-clone" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section text-center fade-up">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Contact Me</h2>
+    <p>Email me directly at <a href="mailto:gungungpta99@gmail.com">gungungpta99@gmail.com</a></p>
+    <form action="https://formspree.io/f/manbzgqv" method="POST" class="mx-auto" style="max-width: 500px;">
+  <input type="text" name="name" class="form-control mb-3" placeholder="Your Name" required>
+  <input type="email" name="email" class="form-control mb-3" placeholder="Your Email" required>
+  <input type="text" name="phone" class="form-control mb-3" placeholder="Your Phone" required>
+  <textarea name="message" class="form-control mb-3" rows="4" placeholder="Your Message"></textarea>
+  <button type="submit" class="btn btn-dark w-100">Send</button>
+</form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start text-white fade-up">
+  <div class="container p-4 pb-0">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Get in Touch</h5>
+        <p><i class="fas fa-envelope me-2"></i><a href="mailto:gungungpta99@gmail.com" class="text-white text-decoration-none"> gungungpta99@gmail.com</a></p>
+        <p><i class="fas fa-phone me-2"></i> +91-8827510999</p>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Durg, Chhattisgarh, India</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+          <li><a href="#projects" class="text-white text-decoration-none">Projects</a></li>
+          <li><a href="Resume.01.pdf" download class="text-white text-decoration-none">Resume</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Follow Me</h5>
+        <a href="https://www.linkedin.com/in/gungun-gupta999" class="btn btn-outline-light btn-floating m-1" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/gungun-gupta" class="btn btn-outline-light btn-floating m-1" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:gungungpta99@gmail.com" class="btn btn-outline-light btn-floating m-1"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background: rgba(0,0,0,0.2);">
+    © 2025 Gungun Gupta | All Rights Reserved
+  </div>
+</footer>
+
+<script>
+// Navbar active underline on scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(sec => {
+    const sectionTop = sec.offsetTop - 100;
+    if (pageYOffset >= sectionTop) {
+      current = sec.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// Intersection Observer for fade animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      // Remove the class when element leaves viewport
+      entry.target.classList.remove("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-left, .fade-right, .fade-up").forEach(el => {
+  observer.observe(el);
+});
+
+
+// Smooth scrolling for navbar links
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
